@@ -15,11 +15,20 @@ class App extends Component {
 
     displayTweet() {
         fetch('/api/tweet')
-        .then((resp) => resp.json()) // Transform data into json
-        .then(function(data) {
-            console.log(data);
-        });
+            .then((resp) => resp.json()) // Transform data into json
+            .then(function (data) {
+                console.log(data);
 
+                const unorderedList = document.getElementById('twitter-card');
+                const properties = Object.keys(data);
+                properties.forEach(function (property) {
+                    const listItemEl = document.createElement('LI');
+                    const textNode = document.createTextNode(property + ': ' + data[property]);
+                    listItemEl.appendChild(textNode);
+
+                    unorderedList.appendChild(listItemEl);
+                });
+            });
     }
 
     render() {
@@ -33,14 +42,9 @@ class App extends Component {
                         handleChange={this.handleChange} /> */}
                 </div>
                 <button onClick={this.displayTweet}>Click 4 tweets</button>
-                {/* <div className="twitter-card">
-                    {this.state.tweets[0]} */}
-                    {/* {(this.state.loading) ? "... loading ..." :
-                        <TwitterCard
-                            key={this.state.characters}
-                            tweets={this.state.characters} 
-                            />} */}
-                {/* </div> */}
+                <div className="twitter-card" id='twitter-card'>
+
+                </div>
             </div>
         );
     }

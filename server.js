@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const axios = require('axios');
 const path = require('path');
 const port = 3000;
 
@@ -12,8 +13,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/tweet', function(req, res) {
-    // res.send(tweet);
 
+    axios.get('https://swapi.dev/api/people/1')
+    .then(function (response) {
+        res.send(response.data);
+    })
+    .catch(function (error) {
+        //handle error
+        console.log(error);
+        res.sendStatus(500);
+    });
 
 });
 
