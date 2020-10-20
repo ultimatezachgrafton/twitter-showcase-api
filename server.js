@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
+// const axios = require('axios');
+const fetch = require("node-fetch");
 const path = require('path');
 const port = 3000;
 
@@ -12,25 +13,21 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/src/index.html'));
 });
 
-app.get('/api/tweet', function(req, res) {
+app.get('/api/tweet', function (req, res) {
 
-    axios.get('https://swapi.dev/api/people/1')
-    .then(function (response) {
-        res.send(response.data);
+    fetch("https://api.twitter.com/1.1/search/tweets.json?q=nasa&result_type=popular&count=1", {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            ContentType: 'application/json',
+            Authorization: "Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA",
+            Cookie: "personalization_id=\"v1_Le0D9ysODxy6l6VX4YJ4/g==\"; guest_id=v1%3A160262816616589369",
+        },
+        redirect: 'follow'
     })
-    .catch(function (error) {
-        //handle error
-        console.log(error);
-        res.sendStatus(500);
-    });
-
+        .then(response => response.text())
+        .then(result => console.log("fetched: "))// + result))
+        .catch(error => console.log('error', error));
 });
 
 app.listen(port, () => console.log(`port ${port}`));
-
-// const tweet = {
-//             "created_at": "Sun Feb 25 18:11:01 +0000 2018",
-//             "id": 967824267948773377,
-//             "id_str": "967824267948773377",
-//             "text": "From pilot to astronaut, Robert H. Lawrence was the first African-American to be selected as an astronaut by any na… https://t.co/FjPEWnh804"
-// };
