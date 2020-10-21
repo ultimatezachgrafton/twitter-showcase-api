@@ -25,8 +25,9 @@ app.get('/api/tweet', function (req, res) {
         },
         redirect: 'follow'
     })
-        .then(response => response.text())
-        .then(result => console.log("fetched: "))// + result))
+        .then(response => response.json())
+        .then(result => res.send(result))
+        .then(result => console.log(result))
         .catch(error => console.log('error', error));
 });
 

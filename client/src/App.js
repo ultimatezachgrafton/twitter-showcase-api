@@ -14,13 +14,11 @@ class App extends Component {
     }
 
     displayTweet() {
-        console.log('click');
         fetch('/api/tweet')
             .then((resp) => resp.json()) // Transform data into json
             .then(function (data) {
                 console.log("displayTweet: " + data);
 
-                // for (let i = 0; i < 5; i++) {
                 const unorderedList = document.getElementById('twitter-card');
                 const properties = Object.keys(data);
                 properties.forEach(function (property) {
@@ -31,9 +29,7 @@ class App extends Component {
                     unorderedList.appendChild(listItemEl);
                     console.log("displayTweet: " + data);
                 });
-                // }
             });
-        console.log('post-fetch');
     }
 
     render() {
