@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// const axios = require('axios');
 const fetch = require("node-fetch");
 const path = require('path');
 const port = 3000;
@@ -27,7 +26,6 @@ app.get('/api/tweet', function (req, res) {
     })
         .then(response => response.json())
         .then(result => res.send(result))
-        .then(result => console.log(result))
         .catch(error => console.log('error', error));
 });
 
