@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/tweet', function (req, res) {
 
-    fetch("https://api.twitter.com/1.1/search/tweets.json?q=nasa&result_type=popular&count=1", {
+    fetch("https://api.twitter.com/1.1/search/tweets.json?q=nasa&result_type=popular", {
         method: 'GET',
         headers: {
             Accept: 'application/json',

@@ -17,9 +17,13 @@ class App extends Component {
         fetch('/api/tweet')
             .then((resp) => resp.json()) // Transform data into json
             .then((data) => {
-                for (let tweet of Object.keys(data)) {
-                    this.setState({ tweets: [ ...tweet]})
-                }
+                // debugger;
+                // const keys = Object.keys(data);
+                const statuses = JSON.stringify(data.statuses);
+                // for (let tweet of data.statuses) {
+                    this.setState({ tweets: [ statuses ]})
+                    console.log("statuses: " + statuses);
+                // }
                 console.log("displayTweet: " + this.state.tweets);
             });
     }
