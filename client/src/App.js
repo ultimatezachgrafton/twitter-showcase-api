@@ -17,7 +17,6 @@ class App extends Component {
         this.displayRandomTweet = this.displayRandomTweet.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
     }
 
     handleChange(event) {
@@ -33,31 +32,22 @@ class App extends Component {
             searchData: this.state.inputValue
         })
         console.log('inner app: ' + this.state.inputValue);
-        this.handleSearch();
-    }
-
-    handleSearch() {
-        // let searchData = 'nasa';
-        // send data to api for searching
-        axios.get('/api/tweet-search')
-            .then(response => {
-                console.log("handlesearch: " + response.data.statuses);
-                this.setState({
-                    tweets: response.data.statuses
-                })
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        this.handleSearchTweet();
     }
 
     // show results from search
     async displaySearchTweet() {
-        fetch('/api/tweet-search')
-            .then((resp) => resp.json()) // Transform data into json
-            .then((data) => {
-                this.setState({ tweets: data.statuses });
-            });
+         // send data to api for searching
+         axios.get('/api/tweet-search')
+         .then(response => {
+             console.log("handlesearch: " + response.data.statuses);
+             this.setState({
+                 tweets: response.data.statuses
+             })
+         })
+         .catch(error => {
+             console.log(error);
+         });
     }
 
     // show results from random
@@ -79,8 +69,7 @@ class App extends Component {
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit} />
                 </div>
-                <button onClick={this.displaySearchTweet}>Click 4 tweets</button>
-                <button onClick={this.displayRandomTweet}>Click 4 random</button>
+                <button onClick={this.displayRandomTweet}>Click 4 random Tweet</button>
                 <div className="twitter-card" id='twitter-card'>
                     {this.state.tweets.length > 0 ? this.state.tweets.text : null}
                 </div>
