@@ -37,8 +37,7 @@ app.get('/api/random', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: "Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA",
-            Cookie: "personalization_id=\"v1_Le0D9ysODxy6l6VX4YJ4/g==\"; guest_id=v1%3A160262816616589369",
+            
         },
         redirect: 'follow'
     })
