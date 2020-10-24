@@ -3,6 +3,7 @@ const app = express();
 const fetch = require("node-fetch");
 const path = require('path');
 const port = 3000;
+const axios = require('axios');
 
 app.use('/src', express.static('src'));
 
@@ -14,28 +15,24 @@ app.get('/', (req, res) => {
 
 // user search
 app.get('/api/search', function (req, res) {
-    const inputValue = req.query.inputValue;
-    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${inputValue}&result_type=popular`, {
+    const q = req.query.q;
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: "Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA",
-            Cookie: "personalization_id=\"v1_Le0D9ysODxy6l6VX4YJ4/g==\"; guest_id=v1%3A160262816616589369",
         },
         redirect: 'follow'
     })
         .then(response => response.json())
         .then(result => res.send(result))
         .catch(error => console.log('error', error))
-        
 });
 
 // random tweet
-app.get('/api/tweet-random', function (req, res) {
-    const randomChoice = req.query.randomChoice;
-
-    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${randomChoice}&result_type=popular`, {
+app.get('/api/random', function (req, res) {
+    const q = req.query.q;
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
