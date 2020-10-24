@@ -13,9 +13,8 @@ app.get('/', (req, res) => {
 });
 
 // user search
-app.get('/api/tweet-search', function (req, res) {
-    fetch("https://api.twitter.com/1.1/search/tweets.json?q=nasa", {
-        // fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${searchData}`, {
+app.get('/api/search', function (req, res) {
+    fetch("https://api.twitter.com/1.1/search/tweets.json", {
         method: 'GET',
         headers: {
             Accept: 'application/json',

@@ -13,8 +13,7 @@ class App extends Component {
             inputValue: '',
             searchData: ''
         }
-        this.displaySearchTweet = this.displaySearchTweet.bind(this);
-        this.displayRandomTweet = this.displayRandomTweet.bind(this);
+        this.handleRandomTweet = this.handleRandomTweet.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -23,36 +22,28 @@ class App extends Component {
         this.setState({
             inputValue: event.target.value
         });
-        console.log(this.inputValue);
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({
-            searchData: this.state.inputValue
+        console.log('handleSubmit: ' + this.state.inputValue);
+        
+        // show results from search
+        // send data to api for searching
+        axios.get(`/api/search?search_term=${this.state.inputValue}`).then(async (response) => {
+            this.setState({
+                tweets: response.data
+            });
+            console.log(response.data)
         })
-        console.log('inner app: ' + this.state.inputValue);
-        this.handleSearchTweet();
-    }
-
-    // show results from search
-    async displaySearchTweet() {
-         // send data to api for searching
-         axios.get('/api/tweet-search')
-         .then(response => {
-             console.log("handlesearch: " + response.data.statuses);
-             this.setState({
-                 tweets: response.data.statuses
-             })
-         })
-         .catch(error => {
-             console.log(error);
-         });
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     // show results from random
     // makwe a list of five users, randomly choose which one to show
-    async displayRandomTweet() {
+    async handleRandomTweet() {
         fetch('/api/tweet-random')
             .then((resp) => resp.json()) // Transform data into json
             .then((data) => {
@@ -62,14 +53,14 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="App" >
                 <div className="topnav">
                     <h1>re:Tweeted</h1>
                     <SearchBar
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit} />
                 </div>
-                <button onClick={this.displayRandomTweet}>Click 4 random Tweet</button>
+                <button onClick={this.handleRandomTweet}>Click 4 random Tweet</button>
                 <div className="twitter-card" id='twitter-card'>
                     {this.state.tweets.length > 0 ? this.state.tweets.text : null}
                 </div>

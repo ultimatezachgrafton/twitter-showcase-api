@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import parseResults from '../services/parseResults';
+import React from 'react';
 
-function SearchBar(props) { 
+function SearchBar(props) {
 
     return (
         <form className="mb-3" id="search-bar" onSubmit={props.handleSubmit}>
