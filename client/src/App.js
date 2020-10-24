@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 // import TwitterCard from "./components/TwitterCard";
 import SearchBar from "./components/SearchBar";
+import RandomButton from "./components/RandomButton"
+
+const randomPossibilities = ["nasa"];
 
 class App extends Component {
     constructor() {
@@ -11,9 +14,10 @@ class App extends Component {
             loading: false,
             tweets: [],
             inputValue: '',
-            searchData: ''
+            searchData: '',
+            randomChoice: ''
         }
-        this.handleRandomTweet = this.handleRandomTweet.bind(this);
+        this.handleRandom = this.handleRandom.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -27,10 +31,7 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log('handleSubmit: ' + this.state.inputValue);
-        
-        // show results from search
-        // send data to api for searching
-        axios.get(`/api/search?search_term=${this.state.inputValue}`).then(async (response) => {
+        axios.get(`/api/search`).then(async (response) => {
             this.setState({
                 tweets: response.data
             });
@@ -41,13 +42,26 @@ class App extends Component {
             });
     }
 
-    // show results from random
-    // makwe a list of five users, randomly choose which one to show
-    async handleRandomTweet() {
-        fetch('/api/tweet-random')
-            .then((resp) => resp.json()) // Transform data into json
-            .then((data) => {
-                this.setState({ tweets: data.statuses });
+    handleRandom() {
+        console.log("click");
+
+        // randomly select one
+        // const random = Math.floor(Math.random() * randomPossibilities.length);
+        // console.log(random, randomPossibilities[random]);
+
+        this.setState({
+            randomChoice: 'nasa'//randomPossibilities[random]
+        })
+
+        axios.get('/api/tweet-random')
+            .then(async (response) => {
+                this.setState({
+                    tweets: response.data
+                });
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error);
             });
     }
 
@@ -60,7 +74,7 @@ class App extends Component {
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit} />
                 </div>
-                <button onClick={this.handleRandomTweet}>Click 4 random Tweet</button>
+                <button className="btn btn-dark" onClick={this.handleRandom}>Click 4 random Tweet</button>
                 <div className="twitter-card" id='twitter-card'>
                     {this.state.tweets.length > 0 ? this.state.tweets.text : null}
                 </div>

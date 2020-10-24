@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
 
 // user search
 app.get('/api/search', function (req, res) {
-    fetch("https://api.twitter.com/1.1/search/tweets.json", {
+    const inputValue = req.query.inputValue;
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${inputValue}&result_type=popular`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -27,11 +28,14 @@ app.get('/api/search', function (req, res) {
         .then(response => response.json())
         .then(result => res.send(result))
         .catch(error => console.log('error', error))
+        
 });
 
 // random tweet
 app.get('/api/tweet-random', function (req, res) {
-    fetch("https://api.twitter.com/1.1/search/tweets.json?q=nasa&result_type=popular&count=1", {
+    const randomChoice = req.query.randomChoice;
+
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${randomChoice}&result_type=popular`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
