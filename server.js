@@ -3,7 +3,6 @@ const app = express();
 const fetch = require("node-fetch");
 const path = require('path');
 const port = 3000;
-const axios = require('axios');
 
 app.use('/src', express.static('src'));
 
@@ -21,6 +20,7 @@ app.get('/api/search', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
+            Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA'
         },
         redirect: 'follow'
     })
@@ -37,7 +37,7 @@ app.get('/api/random', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            
+            Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA'
         },
         redirect: 'follow'
     })

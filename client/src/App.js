@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-// import TwitterCard from "./components/TwitterCard";
+import TwitterCard from "./components/TwitterCard";
 import SearchBar from "./components/SearchBar";
 import RandomButton from "./components/RandomButton"
+import TwitterList from "./components/TwitterList"
 
 const randomPossibilities = ["nasa", "npr", "bbc", "nytimes", "caterpillarlab"];
 
@@ -28,29 +29,44 @@ class App extends Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
-        axios.get(`/api/search`, {
+        this.setState ({
+            loading:true
+        })
+        await axios.get(`/api/search`, {
             params: {
                 q: this.state.inputValue
             }
         })
             .then(async (res) => {
-                const statuses = JSON.stringify(res.data.statuses);
-                console.log(statuses);
+                const statuses = res;
+                console.log(statuses.data.statuses);
+                let tweetArray= [];
+                for (const tweet of statuses.data.statuses) {
+                    // const t = JSON.parse(tweet);
+                    tweetArray.push(tweet);
+                }
+                console.log("ta: " + tweetArray);
                 this.setState({
-                    tweets: [statuses]
+                    tweets: [ tweetArray ]
                 });
 
-                console.log("response data search: " + this.state.tweets)
+                console.log("response data search: " + this.state.tweets.text)
             })
+            .then(this.setState ({
+                    loading:false
+                }))
             .catch(error => {
                 console.log(error);
+                this.setState ({
+                    loading: false
+                })
             });
     }
 
-    async handleRandom() {
-
+    handleRandom(event) {
+        event.preventDefault();
         // randomly select one
         const random = Math.floor(Math.random() * randomPossibilities.length);
         console.log(random, randomPossibilities[random]);
@@ -63,11 +79,14 @@ class App extends Component {
             }
         })
             .then(async (response) => {
-                const random = JSON.stringify(response.data.statuses);
+                const statuses = JSON.stringify(response.data.statuses);
+                console.log("response data statuses random: "+ statuses)
                 this.setState({
-                    tweets: random
+                    tweets: [statuses]
                 });
-                console.log("response data random: " + this.state.tweets)
+
+                // undefined - why?
+                console.log("response data random: " + this.state.tweets.statuses)
             })
             .catch(error => {
                 console.log(error);
@@ -84,8 +103,10 @@ class App extends Component {
                         handleSubmit={this.handleSubmit} />
                 </div>
                 <button className="btn btn-dark" onClick={this.handleRandom}>Click 4 random Tweet</button>
-                <div className="twitter-card" id='twitter-card'>
-                    {this.state.tweets.length > 0 ? this.state.tweets : null}
+                {/* <TwitterList props = {this.state.tweets}/> */}
+                <div className="twitter-list" id='twitter-list'>
+                    {/* { (this.state.loading) && (this.state.tweets.length > 0) ? "...fetching..." : <TwitterCard/> } */}
+                    { this.state.tweets.length > 0 ? this.state.tweets[0].created_at : null}
                 </div>
             </div>
         );
@@ -94,6 +115,8 @@ class App extends Component {
 
 export default App
 
-// TODO: minor bits
-// 1 - RandomButton
+// TODO:
+// 1 - RandomButton (minor)
 // 2 - properly hide keys
+// 3 - make array map list
+// 4 - css
