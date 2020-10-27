@@ -4,6 +4,10 @@ const fetch = require("node-fetch");
 const path = require('path');
 const port = 3000;
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
+
 app.use('/src', express.static('src'));
 
 app.use('/', express.static(path.join(__dirname, 'client/build')));
@@ -15,12 +19,12 @@ app.get('/', (req, res) => {
 // user search
 app.get('/api/search', function (req, res) {
     const q = req.query.q;
-    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular`, {
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular&count=10&tweet_mode=extended`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA'
+            Authorization: process.env.token
         },
         redirect: 'follow'
     })
@@ -32,7 +36,7 @@ app.get('/api/search', function (req, res) {
 // random tweet
 app.get('/api/random', function (req, res) {
     const q = req.query.q;
-    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular`, {
+    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${q}&result_type=popular&tweet_mode=extended`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',

@@ -1,28 +1,22 @@
 import React from "react";
 
-
 function TwitterCard(props) {
-    let tweets = [];
-    console.log("p: " + props.tweets[0].text);
-    // const uuidv4 = require("uuid/v4")
+    console.log("p: " + props.tweet.text );
+    console.log("p: " + props.tweet.user.name );
+    console.log("p: " + props.tweet.user.screen_name );
 
-    for(let i = 0; i < props.tweets.length; i++){
-        let tweet = props.tweets.text;
-        tweets.push(tweet);// <key=uuidv4()> text = tweet.text
-                            /* <td>{character.birth_year}</td>
-                            <td>{character.height}</td>
-                            <td>{character.mass}</td>
-                            <td>{planet}</td>
-                            <td>{race}</td> */
-                        // );/>
-    }
+    return (
+        <div>
+            <span>{ props.tweet.user.profile_image_url_https }</span>
+            <span>{ props.tweet.user.name }</span>
+            <span>{ props.tweet.user.screen_name }</span>
+            <span>{ props.tweet.created_at }</span>
+            <span>{ props.tweet.full_text}</span>
+            {/* <span> {props.entities.media ? props.entities.media[0].media_url_https : null }</span> */}
+            <span>{ props.tweet.favorite_count }</span> <p/>
+            <span>{ props.tweet.retweet_count }</span>
 
-        // console.log("props.tweets.statuses: " + props.tweets.statuses);
-        // props.tweets.statuses = "hi";
-    return(
-        
-            { tweets }
-        
+        </div>
     )
 }
 

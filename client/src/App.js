@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import TwitterCard from "./components/TwitterCard";
 import SearchBar from "./components/SearchBar";
-import RandomButton from "./components/RandomButton"
 import TwitterList from "./components/TwitterList"
 
 const randomPossibilities = ["nasa", "npr", "bbc", "nytimes", "latimes"];
@@ -16,13 +14,11 @@ class App extends Component {
             tweets: [],
             inputValue: '',
             searchData: '',
-            randomChoice: '',
-            tweetsReady: false
+            randomChoice: ''
         }
         this.handleRandom = this.handleRandom.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.checkTweetsReady = this.checkTweetsReady.bind(this);
     }
 
     handleChange(event) {
@@ -43,19 +39,17 @@ class App extends Component {
         })
             .then(async (res) => {
                 const statuses = res;
-                console.log("search get: " + statuses.data.statuses);
+                console.log("search get: " + statuses.data );
                 this.setState({
-                    tweets: [...statuses.data.statuses]
+                    tweets: [ statuses.data ]
                 });
 
-                console.log("response data search: " + this.state.tweets[0].text)
+                console.log("response data search: " + this.state.tweets[0].text);
+                console.log("length: " + this.state.tweets.length)
             })
             .then(this.setState({
                 loading: false
             }))
-            .then(
-                this.checkTweetsReady()
-            )
             .catch(error => {
                 console.log(error);
                 this.setState({
@@ -81,19 +75,16 @@ class App extends Component {
         })
             .then(async (res) => {
                 const statuses = res;
-                console.log("random get: " + statuses.data.statuses);
+                console.log("random get: " + statuses.data);
                 this.setState({
-                    tweets: [ ...statuses.data.statuses ]
+                    tweets: [ statuses.data ]
                 });
-                // undefined - why?
-                console.log("response data random: " + this.state.tweets[0].text)
+                console.log("response data random: " + this.state.tweets[0].text);
+                console.log("id: " + this.state.tweets[0].id);
             })
             .then(this.setState({
                 loading: false
             }))
-            .then(
-                this.checkTweetsReady()
-            )
             .catch(error => {
                 console.log(error);
                 this.setState({
@@ -102,15 +93,8 @@ class App extends Component {
             });
     }
 
-    checkTweetsReady() {
-        if ((this.state.tweets.length > 0) && (!this.state.loading)) {
-            this.setState({
-                tweetsReady: true
-            })
-        }
-    }
-
     render() {
+        
         return (
             <div className="App" >
                 <div className="topnav">
@@ -120,11 +104,8 @@ class App extends Component {
                         handleSubmit={this.handleSubmit} />
                 </div>
                 <button className="btn btn-dark" onClick={this.handleRandom}>Click 4 random Tweet</button>
-                {/* <TwitterList props = {this.state.tweets}/> */}
                 <div>
-                    {this.state.tweetsReady ? <TwitterCard tweets={this.state.tweets} className="twitter-card" id='twitter-card' key={this.state.tweets.id}>
-                    {this.state.tweets.map(tweet => <div>{this.state.tweets}</div>)} </TwitterCard> : null }
-                
+                    { this.state.tweets.length > 0 ? <TwitterList tweets={this.state.tweets}/> : null }
                 </div>
             </div>
         );
@@ -132,9 +113,3 @@ class App extends Component {
 }
 
 export default App
-
-// TODO:
-// 1 - RandomButton (minor)
-// 2 - properly hide keys? if andy says so
-// 3 - make array map list
-// 4 - css

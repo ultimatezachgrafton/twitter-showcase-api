@@ -3,14 +3,15 @@ import TwitterCard from "./TwitterCard"
 
 function TwitterList(props) {
 
-    // props coming in undefined - look up parent to child prop communication
-    console.log(props.tweets);
-    return (
-        <div>
-            { props.length > 0 ? props.tweets.map((item, index) => (
-                <TwitterCard key={index} item={item} / >)) : null }
-        </div>
-    )
+    for (let i = 0; i < props.tweets.length; i++) {
+        console.log("iterate list :" + props.tweets[i].statuses[i].created_at);
+
+        return (
+            <ul>
+                { <TwitterCard tweet={ props.tweets[i].statuses[i] }/> }
+            </ul>
+        )
+    }
 }
 
 export default TwitterList;
