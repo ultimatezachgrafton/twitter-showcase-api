@@ -1,33 +1,29 @@
 import React from "react";
 
 
-function TwitterCard(props){
-    // const tweets = props.statuses;
-    console.log(props);
+function TwitterCard(props) {
+    let tweets = [];
+    console.log("p: " + props.tweets[0].text);
+    // const uuidv4 = require("uuid/v4")
 
-    // let tableRows = [];
+    for(let i = 0; i < props.tweets.length; i++){
+        let tweet = props.tweets.text;
+        tweets.push(tweet);// <key=uuidv4()> text = tweet.text
+                            /* <td>{character.birth_year}</td>
+                            <td>{character.height}</td>
+                            <td>{character.mass}</td>
+                            <td>{planet}</td>
+                            <td>{race}</td> */
+                        // );/>
+    }
 
-    // for(let i = 0; i < props.tweet.statuses.length; i++){
-    //     let character = props.characters[i];
-    //     let planet = props.planets[i];
-    //     let race = props.species[i];
-    //     tableRows.push(<tr key={character.name}>
-    //                         <td>{character.name}</td>
-    //                         <td>{character.birth_year}</td>
-    //                         <td>{character.height}</td>
-    //                         <td>{character.mass}</td>
-    //                         <td>{planet}</td>
-    //                         <td>{race}</td>
-    //                     </tr>);
-    // }
-
+        // console.log("props.tweets.statuses: " + props.tweets.statuses);
+        // props.tweets.statuses = "hi";
     return(
-
-        <div>
-            {/* { props.tweets.statuses.text } */}
-        </div>
+        
+            { tweets }
+        
     )
-    
 }
 
 export default TwitterCard;
