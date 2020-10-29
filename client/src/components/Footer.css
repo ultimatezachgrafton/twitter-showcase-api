@@ -1,0 +1,22 @@
+.footer {
+    border-top: 1px solid white;
+    background-color:  #00acee;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+}
+
+.btn {
+    height:40px;    
+}
+
+.p-footer {
+    margin: 8px 10px 5px 5px;
+}
+
+.span-btn {
+    display:flex;
+    margin: auto;
+    float:right;
+}

@@ -1,0 +1,61 @@
+.tweet-card-body {
+  margin: auto;
+  margin-top:20px;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  background-color: white;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px 25%;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  padding: 0 16px 16px 16px;
+  width: 598px;
+}
+
+.twitter-card-body a {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  outline: 0 none;
+}
+
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}
+
+.tuser-profile-image {
+    margin: 20px 10px 10px 10px;
+    border-radius: 50%;
+}
+
+.twitter-text {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.tuser-name {
+    margin: 10px 10px 10px 10px;
+    font-weight:bolder;
+}
+
+.tuser-screen-name {
+    margin: 10px 30px 10px 10px;
+}
+
+.tweet-footer {
+    display:inline;
+    padding:20px;
+}
+
+.tweet-created-at {
+  float: right;
+  margin: 30px 50px 10px 10px;
+}
+
+.tweet-fav-count, .tweet-retweet-count {
+    margin: 10px 30px 10px 10px;
+}

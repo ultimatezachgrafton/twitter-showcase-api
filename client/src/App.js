@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import TwitterList from "./components/TwitterList";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import SearchBar from "./components/SearchBar";
-import TwitterList from "./components/TwitterList"
 
 const randomPossibilities = ["nasa", "npr", "bbc", "nytimes", "latimes"];
 
@@ -18,34 +19,23 @@ class App extends Component {
         }
         this.handleRandom = this.handleRandom.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({
-            inputValue: event.target.value
-        });
-    }
-
-    async handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit = (inputValue) => {
         this.setState({
             loading: true
         })
-        await axios.get(`/api/search`, {
+        axios.get(`/api/search`, {
             params: {
-                q: this.state.inputValue
+                q: inputValue
             }
         })
             .then(async (res) => {
-                const statuses = res;
-                console.log("search get: " + statuses.data );
+                const statuses = res.data.statuses;
                 this.setState({
-                    tweets: [ statuses.data ]
+                    tweets: [ statuses ]
                 });
-
-                console.log("response data search: " + this.state.tweets[0].text);
-                console.log("length: " + this.state.tweets.length)
+                console.log(this.state.tweets)
             })
             .then(this.setState({
                 loading: false
@@ -58,8 +48,7 @@ class App extends Component {
             });
     }
 
-    async handleRandom(event) {
-        event.preventDefault();
+    handleRandom = () => {
         // randomly select one
         const random = Math.floor(Math.random() * randomPossibilities.length);
         console.log(random, randomPossibilities[random]);
@@ -68,19 +57,16 @@ class App extends Component {
         this.setState({
             loading: true
         })
-        await axios.get(`/api/random`, {
+        axios.get(`/api/random`, {
             params: {
                 q: randomChoice
             }
         })
             .then(async (res) => {
-                const statuses = res;
-                console.log("random get: " + statuses.data);
+                const statuses = res.data.statuses;
                 this.setState({
-                    tweets: [ statuses.data ]
+                    tweets: [ statuses ]
                 });
-                console.log("response data random: " + this.state.tweets[0].text);
-                console.log("id: " + this.state.tweets[0].id);
             })
             .then(this.setState({
                 loading: false
@@ -97,19 +83,22 @@ class App extends Component {
         
         return (
             <div className="App" >
-                <div className="topnav">
-                    <h1>re:Tweeted</h1>
-                    <SearchBar
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleSubmit} />
-                </div>
-                <button className="btn btn-dark" onClick={this.handleRandom}>Click 4 random Tweet</button>
-                <div>
+                <NavBar className="topnav" handleSubmit={this.handleSubmit}/>
+                <div className="div-list">
                     { this.state.tweets.length > 0 ? <TwitterList tweets={this.state.tweets}/> : null }
                 </div>
+                <Footer handleRandom={this.handleRandom}/> 
             </div>
         );
     }
 }
 
-export default App
+export default App;
+
+// css: twitter bird logo for decoration and on search bar
+// css: twitter logo font
+// add working links to tweets
+// put handlefunctions and styles in their own files
+// if (url) {
+// find url in text and wrap linkify code around it
+// }
