@@ -2,12 +2,12 @@
   margin: auto;
   margin-top:20px;
   margin-bottom:35px;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-family: "Arial", Helvetica, sans-serif;
   font-size: 14px;
   line-height: 16px;
   padding: 0 16px 16px 16px;
   width: 598px;
-  background-color: #F5F8FA;
+  background-color: white;
   border-color: #eee #ddd #bbb;
   border-radius: 5px 15%;
   border-style: solid;
@@ -22,14 +22,36 @@
   outline: 0 none;
 }
 
-blockquote.twitter-tweet a:hover,
-blockquote.twitter-tweet a:focus {
-  text-decoration: underline;
+.tweet-header {
+  display:inline-flex;
 }
 
 .tuser-profile-image {
-    margin: 20px 10px 10px 10px;
-    border-radius: 50%;
+  margin: 20px 10px 10px 10px;
+  border-radius: 50%;
+}
+
+.tuser-name {
+    margin: 35px 10px 10px 10px;
+    font-weight:bolder;
+}
+
+.tuser-screen-name {
+    margin: 35px 10px 10px 10px;
+}
+
+.tweet-created-at {
+  margin: 35px 10px 10px 10px;
+  color: lightslategrey;
+}
+
+.tweet-text-container {
+  margin: 10px 10px 10px 20px;
+}
+
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
 }
 
 .twitter-text {
@@ -38,25 +60,12 @@ blockquote.twitter-tweet a:focus {
   line-height: 20px;
 }
 
-.tuser-name {
-    margin: 10px 10px 10px 10px;
-    font-weight:bolder;
-}
-
-.tuser-screen-name {
-    margin: 10px 30px 10px 10px;
-}
-
 .tweet-footer {
     display:inline;
+    margin: 0px 0px 0px 10px;
     padding:20px;
 }
 
-.tweet-created-at {
-  float: right;
-  margin: 30px 50px 10px 10px;
-}
-
-.tweet-fav-count, .tweet-retweet-count {
-    margin: 10px 30px 10px 10px;
+.tweet-fav-count, .tweet-retweet-count, .original-tweet-link {
+    margin: 10px 25px 10px 25px;
 }

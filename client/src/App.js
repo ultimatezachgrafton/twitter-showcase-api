@@ -37,7 +37,7 @@ class App extends Component {
                 this.setState({
                     tweets: [statuses]
                 });
-                console.log(this.state.tweets)
+                console.log(this.state.tweets);
             })
             .then(this.setState({
                 loading: false
@@ -53,7 +53,6 @@ class App extends Component {
     handleRandom = () => {
         // randomly select one
         const random = Math.floor(Math.random() * randomPossibilities.length);
-        console.log(random, randomPossibilities[random]);
 
         const randomChoice = randomPossibilities[random];
         this.setState({
@@ -82,7 +81,6 @@ class App extends Component {
     }
 
     render() {
-
         return (
             <div className="App" >
                 <NavBar className="topnav" handleSubmit={this.handleSubmit} />
@@ -98,6 +96,11 @@ class App extends Component {
 
 export default App;
 
-// make card link to actual tweet
-// css tweetcards - like and retweet icons, text box defined, spacing for all
 // crashes on input of symbols
+// wrap links if they too long
+// cannot solve double media
+
+// to-do:
+// css for smaller screens
+// splash page - "Welcome" message
+// messages for 'searching' and 'couldn't find anything'

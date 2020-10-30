@@ -67,8 +67,6 @@ class TimeParser extends React.Component {
                 date_diff: Math.ceil(floor / 7) + " weeks ago"
             })
         };
-
-        console.log("dd: " + this.state.date_diff);
     }
 
 
