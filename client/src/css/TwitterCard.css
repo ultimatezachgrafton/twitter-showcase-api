@@ -1,17 +1,18 @@
 .tweet-card-body {
   margin: auto;
   margin-top:20px;
+  margin-bottom:35px;
   font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   font-size: 14px;
   line-height: 16px;
-  background-color: white;
-  border-color: #eee #ddd #bbb;
-  border-radius: 5px 25%;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   padding: 0 16px 16px 16px;
   width: 598px;
+  background-color: #F5F8FA;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px 15%;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 5 10px 8px 10px black;
 }
 
 .twitter-card-body a {

@@ -3,7 +3,9 @@ import TwitterList from "./components/TwitterList";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/App.css'
 import axios from 'axios'
+import logo from './static/twitter-bird-white-on-blue.png'
 
 const randomPossibilities = ["nasa", "npr", "bbc", "nytimes", "latimes"];
 
@@ -33,7 +35,7 @@ class App extends Component {
             .then(async (res) => {
                 const statuses = res.data.statuses;
                 this.setState({
-                    tweets: [ statuses ]
+                    tweets: [statuses]
                 });
                 console.log(this.state.tweets)
             })
@@ -65,7 +67,7 @@ class App extends Component {
             .then(async (res) => {
                 const statuses = res.data.statuses;
                 this.setState({
-                    tweets: [ statuses ]
+                    tweets: [statuses]
                 });
             })
             .then(this.setState({
@@ -80,14 +82,15 @@ class App extends Component {
     }
 
     render() {
-        
+
         return (
             <div className="App" >
-                <NavBar className="topnav" handleSubmit={this.handleSubmit}/>
+                <NavBar className="topnav" handleSubmit={this.handleSubmit} />
                 <div className="div-list">
-                    { this.state.tweets.length > 0 ? <TwitterList tweets={this.state.tweets}/> : null }
+                    {this.state.tweets.length > 0 ? <TwitterList tweets={this.state.tweets} /> : 
+                        <img src={logo} alt="twitter-bird-white-on-blue" height="25%" width="25%" className="background-img"/> }
                 </div>
-                <Footer handleRandom={this.handleRandom}/> 
+                <Footer handleRandom={this.handleRandom} />
             </div>
         );
     }
@@ -95,10 +98,6 @@ class App extends Component {
 
 export default App;
 
-// css: twitter bird logo for decoration and on search bar
-// css: twitter logo font
-// add working links to tweets
-// put handlefunctions and styles in their own files
-// if (url) {
-// find url in text and wrap linkify code around it
-// }
+// make card link to actual tweet
+// css tweetcards - like and retweet icons, text box defined, spacing for all
+// crashes on input of symbols

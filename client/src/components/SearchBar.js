@@ -1,5 +1,5 @@
 import React from 'react';
-import "./SearchBar.css"
+import "../css/SearchBar.css"
 
 function SearchBar(props) {
 
@@ -7,7 +7,6 @@ function SearchBar(props) {
         <form className="mb-3" id="search-bar" onSubmit={props.handleSubmit}>
             <input
                 id="searchBar"
-                type="text"
                 name="searchBar"
                 placeholder="Search..."
                 value={props.inputValue}

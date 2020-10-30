@@ -1,0 +1,18 @@
+.navbar {
+    min-height: 80px;
+    background-color: #00acee;
+    border-bottom: 1px solid white;
+    position: fixed;
+    width:100%;
+    margin-top:0px;
+  }
+
+  .navbar a {
+      font-size: 50px;
+      align-content:left;
+      margin-top:-15px;
+  }
+
+  .search-random {
+    float:right;
+  }

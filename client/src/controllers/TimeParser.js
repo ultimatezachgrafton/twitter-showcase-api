@@ -10,7 +10,6 @@ class TimeParser extends React.Component {
     }
 
     componentDidMount() {
-        console.log("hello from time parser");
         const created_at = new Date(this.state.date);
         const diff = (((new Date()).getTime() - created_at.getTime()) / 1000);
         const floor = Math.floor(diff / 86400);
