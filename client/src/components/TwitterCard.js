@@ -2,6 +2,8 @@ import React from "react";
 import "../css/TwitterCard.css";
 import TimeParser from "../controllers/TimeParser.js";
 import TextParser from "../controllers/TextParser";
+import favorite-icon from "./static/favorite-icon.png";
+import retweet-icon from "./static/retweet-icon.png";
 
 function TwitterCard(props) {
     return (
@@ -32,10 +34,10 @@ function TwitterCard(props) {
             
             <div className="tweet-footer">
                 <span className="tweet-fav-count">
-                    Likes: {props.tweet.favorite_count}
+                    <img src={favorite-icon} alt="favorites" height="25%" width="25%" className="icon-img"/> {props.tweet.favorite_count}
                 </span>
                 <span className="tweet-retweet-count">
-                    Retweets:{props.tweet.retweet_count}
+                    <img src={retweet-icon} alt="retweets" height="25%" width="25%" className="icon-img"/>{props.tweet.retweet_count}
                 </span>
                 <span className="tweet-fav-count">
                     <a href={`https://twitter.com/${props.tweet.user.id}/status/${props.tweet.id_str}`} target="_blank"> Original </a>

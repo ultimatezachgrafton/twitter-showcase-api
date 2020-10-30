@@ -3,9 +3,9 @@ import TwitterList from "./components/TwitterList";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/App.css'
-import axios from 'axios'
-import logo from './static/twitter-bird-white-on-blue.png'
+import './css/App.css';
+import axios from 'axios';
+import logo from './static/twitter-bird-white-on-blue.png';
 
 const randomPossibilities = ["nasa", "npr", "bbc", "nytimes", "latimes"];
 
