@@ -98,11 +98,9 @@ export default App;
 
 // crashes on user input of symbols
 // cannot solve double media
-// weirdly, can't get shadow boxes to show (especially weird because started as an official twitter-reccomended css layout)
-// wrap long urls that go off the card
-// not found message banner won't wait for tweets to be done loading, disappears when they are
-// hashtags, urls, mentions not super consistent - esp hashtags
-// some VERY bizarre css positioning stuff - everything wwas extremely touchy. I am half submitting this now out of fear that I'll break it if I touch it again.
+// "not found" message banner won't wait for tweets to be done loading, disappears when they are - I figure this indicates something in my component lifecycles needs to be reworked.
+// hashtag replacement not super consistent
+// aaannd weirdly, can't get shadow boxes to show
 
 // to-do:
 // heroku deployment

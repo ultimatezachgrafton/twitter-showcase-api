@@ -1,6 +1,5 @@
-
-
-Did not use any Twitter libraries.
+Utilizes React, Node.js, Express, Bootstrap. Server fetches from the Twitter API and serves them to the client without the use of any Twitter libraries.
+Wrote parsers to display active links to hashtags, user mentions, urls and media.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

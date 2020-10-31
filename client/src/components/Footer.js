@@ -15,11 +15,11 @@ class NavBar extends React.Component {
         return (
             <div className="footer">
                 <div className="footer-big">
-                    <span className="span-btn"><p className="p-footer">(Pssst. You feeling lucky?) </p><button className="btn btn-dark" onClick={this.handleRandom}>Roll the dice!</button></span>
+                    <span className="span-btn"><button className="btn btn-dark" onClick={this.handleRandom}>Roll the dice!</button></span>
                     <p className="p-footer-credit">Written and maintained by Zach Grafton - Full Stack Developer - Android Developer - Website | Github | LinkedIn </p>
                 </div>
                 <div className="footer-small">
-                    <span className="span-btn"><button className="btn btn-dark" id="footer-btn" onClick={this.handleRandom}>Random Tweet!</button></span>
+                    <span className="span-btn"><button className="btn btn-dark" id="footer-btn" onClick={this.handleRandom}>Roll the dice!</button></span>
                     <p className="p-footer-credit">Written and maintained by Zach Grafton - Full Stack Developer - Android Developer - Website | Github | LinkedIn </p>
                 </div>
             </div>

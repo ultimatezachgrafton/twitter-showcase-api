@@ -12,7 +12,7 @@
   border-radius: 5px 15%;
   border-style: solid;
   border-width: 1px;
-  box-shadow: 5 10px 8px 10px black;
+  box-shadow: 5 10px 8px 5px black;
   word-wrap:break-word;
 }
 
@@ -73,8 +73,7 @@ blockquote.twitter-tweet a:focus {
 
 @media screen and (max-width: 600px) {
   .tweet-card-body {
-    margin:auto;
-    margin-left:5px;
+    margin:auto 0;
     font-size: 14px;
     padding: 0 16px 16px 16px;
     max-width: 420px;

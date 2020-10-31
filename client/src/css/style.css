@@ -1,14 +1,10 @@
 body {
-    background-color: #55acee;
+    /* background-color: #55acee; */
+    
     font-weight: bold;
-    background-image: url('../static/twitter-bird-white-on-blue.png');  
+    background-image: url('../static/twitter-bird-white-on-blue.png'), radial-gradient(circle, rgba(85,172,238,1) 50%, rgba(85,150,238,1) 75%);
+
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    position: absolute;
-}
-
-.div_list {
-    margin:50%;
-    width:50%;
 }
