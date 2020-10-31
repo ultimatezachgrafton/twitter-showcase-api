@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/TwitterCard.css";
 import TimeParser from "../controllers/TimeParser.js";
-import TextParser from "../controllers/TextParser";
+import TextParser from "../controllers/TextParser.js";
 
 function TwitterCard(props) {
     return (

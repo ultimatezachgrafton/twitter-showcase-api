@@ -1,0 +1,14 @@
+.message-container {
+    text-align: center;
+    font-size: 30px;
+    margin: 100px 0px 0px 500px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .message-container{ 
+        width:85%;
+        margin: auto;
+        margin-top: 150px;
+    }
+  }

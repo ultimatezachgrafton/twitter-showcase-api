@@ -1,7 +1,7 @@
 .tweet-card-body {
   margin: auto;
   margin-top:20px;
-  margin-bottom:35px;
+  margin-bottom:15px;
   font-family: "Arial", Helvetica, sans-serif;
   font-size: 14px;
   line-height: 16px;
@@ -13,6 +13,7 @@
   border-style: solid;
   border-width: 1px;
   box-shadow: 5 10px 8px 10px black;
+  word-wrap:break-word;
 }
 
 .twitter-card-body a {
@@ -27,26 +28,26 @@
 }
 
 .tuser-profile-image {
-  margin: 20px 10px 10px 10px;
+  margin: 25px 0px 10px 0px;
   border-radius: 50%;
 }
 
 .tuser-name {
-    margin: 35px 10px 10px 10px;
+    margin: 25px 10px 0px 15px;
     font-weight:bolder;
 }
 
 .tuser-screen-name {
-    margin: 35px 10px 10px 10px;
+    margin: 25px 10px 0px 10px;
 }
 
 .tweet-created-at {
-  margin: 35px 10px 10px 10px;
+  margin: 25px 10px 0px 10px;
   color: lightslategrey;
 }
 
 .tweet-text-container {
-  margin: 10px 10px 10px 20px;
+  margin: -30px 10px 10px 65px;
 }
 
 blockquote.twitter-tweet a:hover,
@@ -62,10 +63,37 @@ blockquote.twitter-tweet a:focus {
 
 .tweet-footer {
     display:inline;
-    margin: 0px 0px 0px 10px;
+    margin: auto;
     padding:20px;
 }
 
 .tweet-fav-count, .tweet-retweet-count, .original-tweet-link {
     margin: 10px 25px 10px 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .tweet-card-body {
+    margin:auto;
+    margin-left:5px;
+    font-size: 14px;
+    padding: 0 16px 16px 16px;
+    max-width: 420px;
+    border-radius: 5px 5%;
+  }
+    
+  .tweet-text-container {
+    margin: 0px 10px 10px 65px;
+  }
+
+  .tweet-fav-count, .tweet-retweet-count, .original-tweet-link {
+    margin: 10px 7.5px 10px 7.5px;
+  }
+
+  .original-tweet-link {
+    width: 30px;
+  }
+  
+.tuser-name, .tuser-screen-name, .tweet-created-at {
+  margin: 25px 5px 0px 5px;
+  }
 }

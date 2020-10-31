@@ -1,4 +1,12 @@
 .twitter-list {
-    margin: 30px 0px 30px 0px;
-    background-color: green;
+    margin:100px 0px 80px 450px;
 }
+
+@media screen and (max-width: 600px) {
+    .twitter-list {
+        width: 100%;
+        margin: auto;
+        margin-top: 150px;
+        margin-bottom: 150px;
+    }
+  }

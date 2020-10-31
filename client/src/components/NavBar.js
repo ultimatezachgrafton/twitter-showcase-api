@@ -32,16 +32,15 @@ class NavBar extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-light justify-content-between" id="navbar">
-                
-                 <a className="navbar-brand" href="/">re:tweets</a>
-            {/* <form class="form-inline"> */}
-            <span className="search-random">
-                <SearchBar
-                    handleChange={this.handleChange}
-                    handleSubmit={this.handleSubmit}
-                    class="form-inline" />
+
+                <a className="navbar-brand" href="/">re:tweets</a>
+                <span className="search-random">
+                    <SearchBar
+                        handleChange={this.handleChange}
+                        handleSubmit={this.handleSubmit}
+                        class="form-inline" />
                 </span>
-</nav>
+            </nav>
         )
     }
 }

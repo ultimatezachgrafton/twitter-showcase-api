@@ -35,6 +35,7 @@ class TextParser extends React.Component {
 
     async handleHashtags() {
         for (let hashtag of this.state.tweet.entities.hashtags) {
+            console.log("hashtag");
             const full_text = this.state.tweet.full_text.replace(`#${hashtag.text}`,
                 `<a href="https://twitter.com/hashtag/${hashtag.text}?src=hashtag_click" target="_blank">#${hashtag.text}</a>`);
             await this.setState({
@@ -46,7 +47,7 @@ class TextParser extends React.Component {
     async handleURLS() {
         for (let url of this.state.tweet.entities.urls) {
             const full_text = this.state.tweet.full_text.replace(`${url.url}`,
-                `<a href="${url.url}" target= "_blank">${url.display_url}</a>`);
+                `<a href="${url.url}" target="_blank">${url.display_url}</a>`);
             await this.setState({
                 fulltext: full_text
             });

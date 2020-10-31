@@ -4,7 +4,7 @@
     border-bottom: 1px solid white;
     position: fixed;
     width:100%;
-    margin-top:0px;
+    top:0px;
   }
 
   .navbar a {
@@ -15,4 +15,11 @@
 
   .search-random {
     float:right;
+  }
+
+  @media screen and (max-width: 600px) {
+    .navbar {
+      max-width:600px;
+      width:100%;
+    }
   }

@@ -1,3 +1,7 @@
+
+
+Did not use any Twitter libraries.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

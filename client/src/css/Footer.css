@@ -11,12 +11,37 @@
     height:40px;    
 }
 
-.p-footer {
-    margin: 8px 10px 5px 5px;
+.p-footer, .p-footer-credit {
+    margin: 0px 10px 0px 5px;
 }
 
 .span-btn {
     display:flex;
-    margin: auto;
+    margin:auto;
     float:right;
 }
+
+.footer-small {
+    display:none;
+}
+
+@media screen and (max-width: 600px) {
+    .p-footer-credit, .p {
+        margin:0px 12px 0px 0px;
+        padding: 0px 0px 0px 0px;
+    }
+    .footer-big {
+        display:none;
+    }
+    .footer-small {
+        margin:0px 0px 0px 0px;
+        display:block;
+    }
+    #footer-btn {
+        display:block;
+    }
+    .span-btn {
+        margin: auto;
+        display:inline-block;
+    }
+  }
