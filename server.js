@@ -50,4 +50,5 @@ app.get('/api/random', function (req, res) {
         .catch(error => console.log('error', error));
 });
 
-app.listen(port, () => console.log(`port ${port}`));
+// app.listen(port, () => console.log(`port ${port}`));
+app.listen(process.env.PORT || 5000);
