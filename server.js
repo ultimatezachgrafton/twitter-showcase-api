@@ -41,8 +41,7 @@ app.get('/api/random', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAKRsIgEAAAAAMeJnehJ99JNloOdZ7bTf5bjzkaE%3DzYaUe9ZHID3Vt0gDKjdQVHBGUZPfdoACevSOjmZBHsg6Gx1IdA'
-        },
+            Authorization: process.env.token        },
         redirect: 'follow'
     })
         .then(response => response.json())

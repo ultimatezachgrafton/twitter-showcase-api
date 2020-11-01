@@ -98,10 +98,13 @@ export default App;
 
 // crashes on user input of symbols
 // cannot solve double media
-// "not found" message banner won't wait for tweets to be done loading, disappears when they are - I figure this indicates something in my component lifecycles needs to be reworked.
-// hashtag replacement not super consistent
-// aaannd weirdly, can't get shadow boxes to show
+// "not found" message banner won't wait for tweets to be done loading. just disappears when there are no tweets to show after a search - I figure this indicates something in my component lifecycles needs to be reworked.
+// hashtag replacement not 100% consistent
+// can't get shadow boxes to show
+
+// what should I put in README so the visitor knows to add .env file?
 
 // to-do:
-// heroku deployment
+// heroku deployment - env file
 // README
+// dropdown for user/content selection
