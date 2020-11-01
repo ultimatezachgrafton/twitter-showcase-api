@@ -126,16 +126,3 @@ class App extends Component {
 }
 
 export default App;
-
-// not seeing difference between keyword and user searches, and deleting my browser data doesn't seem to affect it
-// cannot solve double media
-// "not found" message banner won't wait for tweets to be done loading. just disappears when there are no tweets to show after a search - I figure this indicates something in my component lifecycles needs to be reworked.
-// hashtag replacement not 100% consistent
-// can't get shadow boxes to show
-
-// what should I put in README so the visitor knows to add .env file?
-
-// to-do:
-// heroku deployment - env file
-// README
-// dropdown for user/content selection
