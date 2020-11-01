@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     handleUserSearch(inputValue) {
-        axios.get(`/api/search/keyword`, {
+        axios.get(`/api/search/user`, {
             params: {
                 q: inputValue
             }
