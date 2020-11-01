@@ -33,9 +33,9 @@ class App extends Component {
                 q: inputValue
             }
         })
-            .then((res) => {
+            .then(async (res) => {
                 const statuses = res.data.statuses;
-                this.setState({
+                await this.setState({
                     tweets: [statuses]
                 });
                 console.log(this.state.tweets);
