@@ -5,28 +5,11 @@ import "../css/NavBar.css"
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            inputValue: ''
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleRandom = this.handleRandom.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleData = this.handleData.bind(this);
     }
 
-    handleChange = (event) => {
-        this.setState({
-            inputValue: event.target.value
-        });
-        console.log(this.state.inputValue);
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.handleSubmit(this.state.inputValue);
-    }
-
-    handleRandom = (event) => {
-        this.props.handleRandom(event);
+    handleData = (inputValue, searchType) => {
+        this.props.handleSubmit(inputValue, searchType);
     }
 
     render() {
@@ -36,8 +19,7 @@ class NavBar extends React.Component {
                 <a className="navbar-brand" href="/">re:tweets</a>
                 <span className="search-random">
                     <SearchBar
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleSubmit}
+                        handleData={this.handleData}
                         class="form-inline" />
                 </span>
             </nav>

@@ -1,7 +1,11 @@
 #search-bar input {
     margin: 5px 0px 0px 0px;
     height:40px;
-    width:500px;
+    width:450px;
+}
+
+.select {
+    display:inline;
 }
 
 #submit-btn {
@@ -13,6 +17,8 @@
     float:right;
     margin: 0px 0px 0px 0px;
 }
+
+
 
 @media screen and (max-width: 600px) {
     #search-bar input {

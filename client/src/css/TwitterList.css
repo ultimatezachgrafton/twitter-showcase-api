@@ -1,17 +1,27 @@
 .twitter-list {
     margin:0 auto;
-    margin-top: 100px;
+    margin-top: 150px;
     margin-bottom: 75px;
 }
 
 @media screen and (max-width: 900px) {
     .twitter-list {
+        margin-top: 175px;
+        margin-bottom: 100px;
+    }
+  }
+
+
+  @media screen and (max-width: 805px) {
+    .twitter-list {
+        margin-top: 205px;
         margin-bottom: 100px;
     }
   }
 
 @media screen and (max-width: 600px) {
     .twitter-list {
+        margin-top: 225px;
         margin-bottom: 130px;
         margin-left: 75px;
     }

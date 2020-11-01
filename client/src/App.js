@@ -21,14 +21,45 @@ class App extends Component {
         }
         this.handleRandom = this.handleRandom.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUserSearch = this.handleUserSearch.bind(this);
+        this.handleKeywordSearch = this.handleKeywordSearch.bind(this);
     }
 
-    handleSubmit = (inputValue) => {
+    handleSubmit = (inputValue, searchType) => {
         this.setState({
             loading: true,
             context: "searching"
+        });
+        searchType === 'Username' ? this.handleUserSearch(inputValue) : this.handleKeywordSearch(inputValue);
+    }
+
+    handleUserSearch(inputValue) {
+        axios.get(`/api/search/keyword`, {
+            params: {
+                q: inputValue
+            }
         })
-        axios.get(`/api/search`, {
+            .then(async (res) => {
+                const statuses = res.data.statuses;
+                await this.setState({
+                    tweets: [statuses]
+                });
+                console.log(this.state.tweets);
+            })
+            .then(this.setState({
+                loading: false
+            }),
+            )
+            .catch (error => {
+            console.log(error);
+            this.setState({
+                loading: false
+            })
+        })
+    }
+
+    handleKeywordSearch(inputValue) {
+        axios.get(`/api/search/keyword`, {
             params: {
                 q: inputValue
             }
@@ -96,7 +127,7 @@ class App extends Component {
 
 export default App;
 
-// crashes on user input of symbols
+// not seeing difference between keyword and user searches, and deleting my browser data doesn't seem to affect it
 // cannot solve double media
 // "not found" message banner won't wait for tweets to be done loading. just disappears when there are no tweets to show after a search - I figure this indicates something in my component lifecycles needs to be reworked.
 // hashtag replacement not 100% consistent
