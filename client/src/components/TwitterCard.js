@@ -29,9 +29,8 @@ function TwitterCard(props) {
                     <TextParser key={props.tweet.id} tweet={props.tweet} />
                 </div>
             </div>
-            <span>
-                {props.tweet.entities.media ? props.tweet.entities.media[0].media_url_https : null}
-            </span>
+            <img alt={props.tweet.entities.media ? props.tweet.entities.media[0].media_url_https : null} 
+                src={props.tweet.entities.media ? props.tweet.entities.media[0].media_url_https : null}/>
             <p />
 
             <div className="tweet-footer">
