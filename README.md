@@ -1,14 +1,3 @@
-Here is my Twitter app for code review, and a few notes/questions in descending importance...
-
-1 - I cannot solve the mystery of the double media post. Whenever I try to replace the tweet's media_url, it still ends up there. And thus two media_urls render - one a beautifully aligned link, the other a gross, useless blight of text. I've tried everything - editing 'full_text' directly, deleting all the various instances of media and media_url that exist in the data. If anyone can figure this out, I'd love to hear it.
-2 - I have a "tweets not found" message banner that won't wait for tweets to be done loading. Instead, if a search comes back empty, all banners disappear. I figure this indicates something wrong with the lifecycle of how I fetch my data...
-3 - Hashtag replacement is not 100% consistent.
-4 - I want to put shadow boxes on the cards, but cannot get them to show.
-
-That's it! Otherwise, enjoy!
-
-// what should I put in README so the visitor knows to add .env file? and any other necessaries?
-
 Utilizes React, Node.js, Express, Bootstrap. Server fetches from the Twitter API and serves them to the client without the use of any Twitter libraries.
 Wrote parsers to display active links to hashtags, user mentions, urls and media.
 

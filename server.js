@@ -6,7 +6,32 @@ const port = 3000;
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
-  }
+}
+
+const twitterData = "grant_type=client_credentials";
+
+const getToken = async () => {
+    return await axios.post('https://api.twitter.com/oauth2/token', twitterData, {
+        auth: {
+            username: process.env.TWITTER_API_KEY,
+            password: process.env.TWITTER_SECRET_KEY
+        },
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            Accept: "application/json"
+        },
+        responseType: 'application/json',
+    })
+        .then(response => {
+            return response.data;
+            // console.log(respomse.data);
+        })
+        .catch(err => {
+            console.log(err.response);
+        })
+}
+
+const token = getToken();
 
 app.use('/src', express.static('src'));
 
@@ -24,7 +49,7 @@ app.get('/api/search/user', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: process.env.token
+            Authorization: token
         },
         redirect: 'follow'
     })
@@ -41,7 +66,7 @@ app.get('/api/search/keyword', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: process.env.token
+            Authorization: token
         },
         redirect: 'follow'
     })
@@ -58,7 +83,8 @@ app.get('/api/random', function (req, res) {
         headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            Authorization: process.env.token        },
+            Authorization: token
+        },
         redirect: 'follow'
     })
         .then(response => response.json())

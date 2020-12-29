@@ -39,9 +39,9 @@ class App extends Component {
                 q: inputValue
             }
         })
-            .then(async (res) => {
-                const statuses = res.data.statuses;
-                await this.setState({
+            .then((res) => {
+                const statuses = res.data;
+                this.setState({
                     tweets: [statuses]
                 });
                 console.log(this.state.tweets);
@@ -64,9 +64,9 @@ class App extends Component {
                 q: inputValue
             }
         })
-            .then(async (res) => {
+            .then((res) => {
                 const statuses = res.data.statuses;
-                await this.setState({
+                this.setState({
                     tweets: [statuses]
                 });
                 console.log(this.state.tweets);
